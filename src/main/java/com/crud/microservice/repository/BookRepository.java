@@ -1,4 +1,4 @@
-package com.crud.microservice.controller;
+package com.crud.microservice.repository;
 
 import com.crud.microservice.entity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
