@@ -1,17 +1,28 @@
 package com.crud.microservice.controller;
 
+import com.crud.microservice.dto.AuthResponse;
 import com.crud.microservice.dto.UserRequest;
 import com.crud.microservice.dto.UserResponse;
+import com.crud.microservice.entity.UsersJwtEntity;
+import com.crud.microservice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/get/{id}")
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/api/users")
+    public List<AuthResponse> getAllUsers() {
+        return userService.findAll();
+    }
+
+    @GetMapping("/user/get/{id}")
     public UserResponse getUserById(@PathVariable("id") String id) {
         List<UserResponse> allUsers = getAllUser();
 
@@ -24,7 +35,7 @@ public class UserController {
         return new UserResponse(id,"Not Found");
     }
 
-    @PostMapping("/add")
+    @PostMapping("/user/add")
     public String addUser(@RequestBody UserRequest request) {
         List<UserResponse> allUsers = getAllUser();
 
