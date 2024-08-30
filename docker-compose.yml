@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  mydb:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'microservice'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'strong_password'
+      MYSQL_ROOT_PASSWORD: 'strong_password'
+    ports:
+      - '3307:3306'
+#    expose:
+#      - '3306'
+#    volumes:
+#      - my-db:/var/lib/mysql
+  app:
+    build: .
+    depends_on:
+        - mydb
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mydb:3306/microservice
+        SPRING_DATASOURCE_USERNAME: user
+        SPRING_DATASOURCE_PASSWORD: strong_password
+    ports:
+        - "8081:8081"

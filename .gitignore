@@ -14,9 +14,9 @@
 /runConfigurations.xml
 /vcs.xml
 
-# Gradle files
-.gradle/
-build/
+## Gradle files
+#.gradle/
+#build/
 
 # IntelliJ
 *.iml
