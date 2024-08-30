@@ -27,6 +27,7 @@ build/
 .idea/dictionaries
 .idea/libraries
 .idea/caches
+.idea/dbnavigator.xml
 
 ### Sonar ###
 /.idea/sonarlint/
