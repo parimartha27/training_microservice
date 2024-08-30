@@ -37,3 +37,6 @@ build/
 gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
+*.xml
+*.class
+*.bin
